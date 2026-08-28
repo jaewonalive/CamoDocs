@@ -1,0 +1,55 @@
+# ---- Runtime artifacts (regenerable; never commit) ----
+# BEIR corpora + pickled caches. datasets/ holds machine-local symlinks and
+# multi-GB downloads; data_cache/ is rebuilt automatically on first run
+# (see scripts/build_cache.sh in the README).
+datasets/
+data_cache/
+
+# Run outputs
+logs/*
+!logs/.gitkeep
+test_logs/
+outputs/
+*.ckpt
+*.ckpt.tmp
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+venv/
+.venv/
+env/
+.ipynb_checkpoints/
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# ---- Backups / scratch ----
+.bak/
+*.bak
+*.orig
+*.rej
+scratch/
+tmp/
+
+# ---- Secrets: never commit credentials ----
+.env
+.env.*
+*.pem
+*.key
+secrets.*
+api_key*
+
+# local smoke-test scaffolding and its output
+smoke_test/

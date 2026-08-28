@@ -1,0 +1,26 @@
+# Requirements for the LLM Filter critic environment.
+#
+# The critic (openai/gpt-oss-safeguard-20b, served via vLLM) requires a
+# newer vLLM + transformers + torch stack than the main eval pipeline.
+# Install this in a SEPARATE conda env from requirements.txt (e.g.
+# `conda create -n camodocs_vllm python=3.10 && pip install -r requirements_vllm.txt`).
+#
+# Used only by scripts/gpt_oss_safeguard_vllm_serve.sh.
+# scripts/llm_filter_eval.sh (which calls evaluate.py) runs from the
+# primary env defined in requirements.txt.
+#
+# Python: 3.10.20
+
+vllm==0.20.1
+torch==2.11.0
+torchvision==0.26.0
+torchaudio==2.11.0
+transformers==5.8.0
+tokenizers==0.22.2
+huggingface_hub==1.14.0
+safetensors==0.7.0
+triton==3.6.0
+sentencepiece==0.2.1
+openai==2.36.0
+openai-harmony==0.0.8
+numpy==2.2.6

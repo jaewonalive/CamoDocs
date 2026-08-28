@@ -1,0 +1,31 @@
+# Versions pinned to the environment used for all reported results.
+# Python 3.10.20, CUDA 12.8.
+# Install with:  pip install -r requirements.txt
+
+# Core deep learning
+torch==2.8.0
+transformers==5.9.0
+sentence-transformers==5.5.1
+lmdeploy==0.13.0
+faiss-cpu==1.14.2
+
+# Retrieval / evaluation
+beir==2.2.0
+rouge_score==0.1.2
+scikit-learn==1.7.2
+scipy==1.15.3
+numpy==2.2.6
+
+# LLM API clients
+openai==2.38.0
+anthropic==0.104.1
+
+# NLP utilities
+nltk==3.9.4
+spacy==3.8.14
+regex==2026.5.9
+
+# I/O, logging, misc
+tqdm==4.67.3
+loguru==0.7.3
+requests==2.34.2
