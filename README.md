@@ -1,7 +1,7 @@
 # CamoDocs
 
-Official repo of the EMNLP 2026 paper **CamoDocs: A Poisoning Attack Against
-Retrieval-Augmented Language Models Using Camouflaged Documents**.
+Official repo of the EMNLP 2026 paper [**CamoDocs: A Poisoning Attack Against
+Retrieval-Augmented Language Models Using Camouflaged Documents**](https://arxiv.org/abs/2608.28389).
 
 CamoDocs is a knowledge database poisoning attack against Retrieval-Augmented Generation
 (RAG) that needs no query inclusion. Each adversarial sub-document is
@@ -74,8 +74,10 @@ bash scripts/eval_rerank.sh              # Cross-encoder rerank (bge-reranker-v2
 bash scripts/llm_filter_eval.sh          # LLM Filter (needs the vLLM critic below)
 ```
 
-The first six need 1 GPU. The LLM Filter needs 4, and a critic server running
-in a second shell:
+The first six need 1 GPU. The LLM Filter additionally runs a 20B critic in a
+second shell, so it needs enough GPU memory for that critic alongside the
+victim. Our runs used four 48 GB cards; set `TP` and `LM_DEPLOY_TP` to match
+your own hardware:
 
 ```bash
 # Shell 1
@@ -125,6 +127,7 @@ All reported numbers reproduce for HotpotQA, NQ, and MS-MARCO from the bundled
 artifacts. (Re-running Stage 2 itself needs your own answer file for NQ and
 MS-MARCO — `gen_adv.py` explains this if you try.)
 
+
 ## Acknowledgement
 
 - Our code used the [beir](https://github.com/beir-cellar/beir) benchmark.
@@ -153,3 +156,18 @@ The package uses publicly available datasets, models, and software libraries und
 Model weights and APIs used by the pipeline, including GPT-4o-mini, GPT-4.1-mini, Llama-3.1-8B, Qwen3-8B, Mixtral-8x7B, Contriever, ANCE, GPT-2, bge-reranker-v2-m3, and gpt-oss-safeguard-20b, remain subject to their original providers' licenses and usage policies. This package does not grant additional rights to those third-party artifacts.
 
 The adversarial documents and intermediate artifacts included in this package are provided only for controlled research evaluation of RAG robustness. They should not be used to attack deployed systems or poison real-world knowledge bases.
+
+
+## Citation
+
+```bibtex
+@misc{jung2026camodocs,
+      title={CamoDocs: A Poisoning Attack Against Retrieval-Augmented Language Models Using Camouflaged Documents},
+      author={Jaewon Jung and Haizhong Zheng and Hongsun Jang and Jaeyong Song and Beidi Chen and Jinho Lee},
+      year={2026},
+      eprint={2608.28389},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2608.28389},
+}
+```
